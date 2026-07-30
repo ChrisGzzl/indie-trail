@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#10131a">
+  <title>弹珠勇者：背包试炼</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <main id="app">
+    <header class="game-hud" aria-label="战斗信息">
+      <div class="stage-block">
+        <span id="stageLabel">第 1 关</span>
+        <strong id="stageName">锈铁庭院</strong>
+      </div>
+      <div class="score-block">
+        <span>分数</span>
+        <strong id="scoreValue">0</strong>
+      </div>
+      <div class="timer-block" id="timerBlock">
+        <span>剩余</span>
+        <strong id="timerValue">60.0</strong>
+      </div>
+    </header>
+
+    <section class="table-wrap" aria-label="弹珠台">
+      <canvas id="gameCanvas" width="390" height="700"></canvas>
+      <div class="boss-bar" id="bossBar" hidden>
+        <div class="boss-bar__label"><span>炉心守卫</span><span id="bossHpText">1000 / 1000</span></div>
+        <div class="boss-bar__track"><i id="bossHpFill"></i></div>
+      </div>
+      <div class="combo-readout" id="comboReadout" aria-live="polite"></div>
+      <div class="toast" id="toast"></div>
+    </section>
+
+    <footer class="control-deck">
+      <button class="flipper-control flipper-control--left" id="leftControl" aria-label="左挡板">
+        <span class="key-icon">L</span><span>左挡板</span>
+      </button>
+      <div class="power-core" id="powerCore" aria-label="技能能量">
+        <i id="powerFill"></i><span id="powerText">0%</span>
+      </div>
+      <button class="flipper-control flipper-control--right" id="rightControl" aria-label="右挡板">
+        <span>右挡板</span><span class="key-icon">R</span>
+      </button>
+    </footer>
+  </main>
+
+  <section class="overlay start-screen" id="startScreen">
+    <div class="title-mark" aria-hidden="true">
+      <span class="pixel-ball"></span>
+      <span class="pixel-spark pixel-spark--a"></span>
+      <span class="pixel-spark pixel-spark--b"></span>
+    </div>
+    <p class="eyebrow">PINBALL × BACKPACK</p>
+    <h1>弹珠勇者</h1>
+    <p class="subtitle">背包试炼</p>
+    <div class="start-stats">
+      <span>4 小关</span><i></i><span>1 首领</span><i></i><span>60 秒</span>
+    </div>
+    <button class="primary-button" id="startButton">开始试炼</button>
+  </section>
+
+  <section class="overlay reward-screen" id="rewardScreen" hidden>
+    <div class="reward-header">
+      <p class="eyebrow">关卡结算</p>
+      <h2 id="rewardTitle">选择战利品</h2>
+      <p id="rewardScore">本关得分 0</p>
+    </div>
+    <div class="reward-choices" id="rewardChoices"></div>
+    <div class="pack-section">
+      <div class="pack-heading">
+        <h3>英雄背包</h3>
+        <span id="packStats">攻击 12 · 暴击 5%</span>
+      </div>
+      <div class="backpack" id="backpack" aria-label="英雄背包"></div>
+    </div>
+    <button class="primary-button continue-button" id="continueButton" disabled>进入下一关</button>
+  </section>
+
+  <section class="overlay result-screen" id="resultScreen" hidden>
+    <div class="result-icon" id="resultIcon">★</div>
+    <p class="eyebrow" id="resultEyebrow">试炼完成</p>
+    <h2 id="resultTitle">炉心已熄灭</h2>
+    <div class="final-score">
+      <span>最终得分</span>
+      <strong id="finalScore">0</strong>
+    </div>
+    <div class="run-summary" id="runSummary"></div>
+    <button class="primary-button" id="restartButton">再来一次</button>
+  </section>
+
+  <script src="game.js?v=6"></script>
+</body>
+</html>
