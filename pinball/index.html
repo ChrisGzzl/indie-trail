@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
   <meta name="theme-color" content="#10131a">
   <title>弹珠勇者：背包试炼</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <main id="app">
@@ -38,9 +38,9 @@
       <button class="flipper-control flipper-control--left" id="leftControl" aria-label="左挡板">
         <span class="key-icon">L</span><span>左挡板</span>
       </button>
-      <div class="power-core" id="powerCore" aria-label="技能能量">
+      <button class="power-core" id="powerCore" aria-label="按住蓄力发射">
         <i id="powerFill"></i><span id="powerText">0%</span>
-      </div>
+      </button>
       <button class="flipper-control flipper-control--right" id="rightControl" aria-label="右挡板">
         <span>右挡板</span><span class="key-icon">R</span>
       </button>
@@ -74,6 +74,11 @@
         <h3>英雄背包</h3>
         <span id="packStats">攻击 12 · 暴击 5%</span>
       </div>
+      <div class="pack-tools">
+        <span id="packCapacity">容量 17 / 25</span>
+        <strong id="packSelection">未选择装备</strong>
+        <button id="rotateItemButton" class="icon-button" aria-label="旋转选中装备" title="旋转选中装备" disabled>↻</button>
+      </div>
       <div class="backpack" id="backpack" aria-label="英雄背包"></div>
     </div>
     <button class="primary-button continue-button" id="continueButton" disabled>进入下一关</button>
@@ -91,6 +96,6 @@
     <button class="primary-button" id="restartButton">再来一次</button>
   </section>
 
-  <script src="game.js?v=6"></script>
+  <script src="game.js?v=8"></script>
 </body>
 </html>
