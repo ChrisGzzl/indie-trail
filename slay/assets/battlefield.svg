@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="1500" viewBox="0 0 700 1500">
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2428"/>
+      <stop offset="0.52" stop-color="#11191c"/>
+      <stop offset="1" stop-color="#172024"/>
+    </linearGradient>
+    <radialGradient id="glowTop" cx="50%" cy="0" r="75%">
+      <stop offset="0" stop-color="#9b4738" stop-opacity=".25"/>
+      <stop offset=".55" stop-color="#26383b" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowBottom" cx="50%" cy="100%" r="65%">
+      <stop offset="0" stop-color="#4c9689" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="chips" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M4 74l12-8 8 5-7 14H5zM72 13l16-5 7 10-13 9-12-5z" fill="#c7d4cf" opacity=".025"/>
+      <path d="M0 99h100M99 0v100" stroke="#aebfba" stroke-opacity=".025"/>
+    </pattern>
+    <filter id="noise">
+      <feTurbulence baseFrequency=".65" numOctaves="3" seed="7" type="fractalNoise"/>
+      <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .09 0"/>
+    </filter>
+  </defs>
+  <rect width="700" height="1500" fill="url(#stone)"/>
+  <rect width="700" height="1500" fill="url(#chips)"/>
+  <rect width="700" height="1500" fill="url(#glowTop)"/>
+  <rect width="700" height="1500" fill="url(#glowBottom)"/>
+  <path d="M0 0h48l28 70-22 118 17 144-27 150 21 160-18 168 20 143-25 177 22 170-18 170H0z" fill="#090d0f" opacity=".72"/>
+  <path d="M700 0h-48l-28 70 22 118-17 144 27 150-21 160 18 168-20 143 25 177-22 170 18 170h46z" fill="#090d0f" opacity=".72"/>
+  <g fill="none" stroke="#b56f45" stroke-opacity=".16" stroke-width="7">
+    <path d="M25 94h45M630 94h45M22 310h42M636 310h42M24 1190h42M634 1190h43M24 1390h54M622 1390h55"/>
+  </g>
+  <g fill="#d48751" opacity=".16">
+    <circle cx="54" cy="94" r="19"/><circle cx="646" cy="94" r="19"/>
+    <circle cx="50" cy="1390" r="19"/><circle cx="650" cy="1390" r="19"/>
+  </g>
+  <rect width="700" height="1500" filter="url(#noise)" opacity=".45"/>
+</svg>

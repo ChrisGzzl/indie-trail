@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#0c1013">
+  <title>七格防线</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <main class="game-shell" id="gameShell">
+    <header class="top-hud">
+      <div class="hero-status">
+        <div class="portrait" aria-hidden="true"><span></span></div>
+        <div class="health-wrap">
+          <div class="health-label">
+            <strong>守线者</strong>
+            <span id="healthText">36 / 36</span>
+          </div>
+          <div class="health-track"><i id="healthFill"></i></div>
+        </div>
+        <div class="armor" id="armorReadout" hidden>
+          <span aria-hidden="true">◆</span><b id="armorValue">0</b>
+        </div>
+      </div>
+      <div class="battle-status">
+        <span id="turnLabel">回合 1</span>
+        <strong id="waveLabel">第一波</strong>
+        <span id="enemyCount">威胁 0</span>
+      </div>
+    </header>
+
+    <section class="battlefield" aria-label="七列十五行战场">
+      <div class="zone-label zone-label--spawn">敌军入口</div>
+      <div class="zone-label zone-label--defense">防守区域</div>
+      <div class="board" id="board"></div>
+      <div class="selection-hint" id="selectionHint">选择卡牌或使用基础移动</div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="wave-banner" id="waveBanner" hidden></div>
+    </section>
+
+    <section class="command-deck" aria-label="战斗指令">
+      <div class="command-row">
+        <button class="step-button" id="stepButton" type="button">
+          <span class="step-icon" aria-hidden="true">↟</span>
+          <span><strong>移动</strong><small>每回合一次</small></span>
+        </button>
+        <div class="energy" aria-label="行动力">
+          <span id="energyPips"></span>
+          <small>行动力</small>
+        </div>
+        <button class="end-turn" id="endTurnButton" type="button">
+          <span aria-hidden="true">▶</span>
+          <strong>结束</strong>
+        </button>
+      </div>
+      <div class="hand" id="hand" aria-label="手牌"></div>
+    </section>
+  </main>
+
+  <section class="overlay" id="startScreen">
+    <div class="title-emblem" aria-hidden="true">
+      <i></i><span>VII</span><i></i>
+    </div>
+    <p class="eyebrow">CARD TACTICS · MOBILE DEMO</p>
+    <h1>七格防线</h1>
+    <p class="subtitle">用一手牌，改写整条战线。</p>
+    <div class="briefing">
+      <div><b>7 × 15</b><span>竖屏战场</span></div>
+      <div><b>3</b><span>行动力</span></div>
+      <div><b>3</b><span>敌军波次</span></div>
+    </div>
+    <p class="start-tip">点击卡牌，再点击棋盘上的高亮格。敌军会显示速度，并在结束回合后向下推进。</p>
+    <button class="primary-button" id="startButton" type="button">进入战场</button>
+  </section>
+
+  <section class="overlay result-screen" id="resultScreen" hidden>
+    <p class="eyebrow" id="resultEyebrow">战斗结束</p>
+    <div class="result-mark" id="resultMark">VII</div>
+    <h2 id="resultTitle">防线守住了</h2>
+    <p id="resultSummary"></p>
+    <div class="result-stats" id="resultStats"></div>
+    <button class="primary-button" id="restartButton" type="button">再守一次</button>
+  </section>
+
+  <script src="game.js?v=2"></script>
+</body>
+</html>
