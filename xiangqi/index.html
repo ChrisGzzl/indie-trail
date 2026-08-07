@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5ead5">
+  <title>小小棋手 · 中国象棋</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="board-fix.css?v=5">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">棋</div><div><h1>小小棋手</h1><p>中国象棋 · 学习与训练</p></div></div>
+      <div class="top-actions"><button class="icon-btn" id="saveBtn" title="保存棋局">💾<span>保存</span></button><button class="icon-btn" id="newBtn" title="新开棋局">↻<span>新局</span></button></div>
+    </header>
+    <section class="layout">
+      <section class="board-panel">
+        <div class="board-head"><div><span class="eyebrow">当前对局</span><h2 id="modeTitle">标准对弈</h2></div><div class="turn-pill" id="turnPill">轮到红方</div></div>
+        <div class="board-wrap"><div id="board" class="board" role="grid" aria-label="中国象棋棋盘"></div></div>
+        <div class="board-footer"><span id="message" role="status">请选择一个棋子</span><button class="hint-btn" id="hintBtn">💡 获取提示</button></div>
+      </section>
+      <aside class="side-panel">
+        <section class="control-section"><div class="section-title">对弈设置</div><label class="field-label" for="difficulty">AI 难度</label><select id="difficulty"><option value="1">1 · 练习（很友好）</option><option value="2">2 · 入门</option><option value="3" selected>3 · 进阶</option><option value="4">4 · 挑战</option><option value="5">5 · 大师</option></select><div class="side-actions"><button id="undoBtn">↶ 悔棋</button><button id="flipBtn">⇅ 翻转棋盘</button></div></section>
+        <section class="control-section"><div class="section-title">残局训练</div><div class="endgames" id="endgames"></div></section>
+        <section class="control-section tips"><div class="section-title">学习小贴士</div><div class="tip-card"><span>1</span><p>先看将军，再看吃子。每一步都问自己：对方下一步要做什么？</p></div><div class="tip-card"><span>2</span><p>马走日、象走田，炮隔子打。记住口诀，棋子就不会迷路。</p></div></section>
+      </aside>
+    </section>
+    <footer class="footer-note"><span>红方由你执子</span><span>·</span><span id="moveCount">第 1 回合</span><span>·</span><span>存档自动保留在本设备</span></footer>
+  </main>
+  <div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+  <script src="vendor/xiangqi.min.js?v=052"></script>
+  <script src="game.js?v=5"></script>
+</body>
+</html>

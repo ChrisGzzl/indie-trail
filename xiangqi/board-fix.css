@@ -1,0 +1,198 @@
+/* Board geometry: all pieces sit on intersections. */
+.board {
+  aspect-ratio: 9 / 10;
+  background: #e7b873;
+  background-image: none;
+  border: 2px solid var(--line);
+  isolation: isolate;
+}
+
+.board-lines {
+  position: absolute;
+  z-index: 0;
+  left: 5.5556%;
+  right: 5.5556%;
+  top: 5%;
+  bottom: 5%;
+  pointer-events: none;
+}
+
+.board-lines::before,
+.board-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 44.4444%;
+  border: 1.5px solid var(--line);
+  background-image:
+    linear-gradient(to right, var(--line) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, var(--line) 1.5px, transparent 1.5px);
+  background-size: 12.5% 100%, 100% 25%;
+}
+
+.board-lines::before { top: 0; }
+.board-lines::after { bottom: 0; }
+
+.river {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44.4444%;
+  height: 11.1112%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #edc785;
+  border-left: 1.5px solid var(--line);
+  border-right: 1.5px solid var(--line);
+  color: #744527;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: clamp(17px, 2.8vw, 30px);
+  font-weight: 700;
+  letter-spacing: .28em;
+}
+
+.palace {
+  position: absolute;
+  z-index: 2;
+  left: 37.5%;
+  width: 25%;
+  height: 22.2222%;
+  overflow: hidden;
+}
+
+.palace::before,
+.palace::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -12%;
+  width: 1.5px;
+  height: 125%;
+  background: var(--line);
+  transform-origin: center;
+}
+
+.palace::before { transform: rotate(48deg); }
+.palace::after { transform: rotate(-48deg); }
+.palace-top { top: 0; }
+.palace-bottom { bottom: 0; }
+.cell { z-index: 2; }
+.piece {
+  width: 78%;
+  height: 78%;
+  font-size: clamp(20px, 4.3vw, 38px);
+  background: radial-gradient(circle at 35% 28%, #fff8e8, #ead4af 72%);
+  box-shadow: 0 3px 0 #8c5e3c, 0 4px 7px #57351c4a;
+}
+
+.modal[hidden] { display: none; }
+.primary-button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--red);
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 800;
+}
+
+/* A calmer wood-and-paper finish keeps the geometry legible. */
+.board-wrap {
+  width: min(100%, 650px);
+  padding: 12px;
+  background: #925c35;
+  border: 1px solid #684027;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px #59351f38, inset 0 0 0 2px #d79a5e;
+}
+.board {
+  background-color: #edc98a;
+  background-image: linear-gradient(90deg, #ffffff0d 1px, transparent 1px), linear-gradient(#7b4b2d10 1px, transparent 1px);
+  background-size: 7px 7px;
+  border-color: #795035;
+}
+.board-lines::before,
+.board-lines::after { border-color: #795035; }
+.river {
+  background: #f3dba6;
+  color: #70432a;
+  border-color: #795035;
+  text-shadow: 0 1px #fff0c9;
+}
+.piece {
+  width: 76%;
+  height: 76%;
+  border: 1.5px solid #6e4932;
+  box-shadow: 0 2px 0 #9d6c45, 0 3px 5px #57351c38;
+  font-size: clamp(20px, 4vw, 36px);
+}
+.piece.red { border-color: #a52f2b; }
+.cell.selected::before { background: #f6d36e; border-color: #a96436; }
+
+.cell.last-from::after,
+.cell.last-to::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  width: 58%;
+  height: 58%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cell.last-from::after {
+  border: 3px dashed #1f7058;
+  background: radial-gradient(circle, #1f7058 0 10%, transparent 11%), #27785f1a;
+  box-shadow: 0 0 0 3px #fff4c255;
+}
+
+.cell.last-to::after {
+  width: 88%;
+  height: 88%;
+  border: 3px solid #cc8616;
+  box-shadow: 0 0 0 4px #fff1a077, 0 0 12px #a75e2099;
+  animation: last-move-pulse 760ms ease-out;
+}
+
+.piece.ai-moved {
+  z-index: 5;
+  animation: ai-piece-move 520ms cubic-bezier(.2, .82, .25, 1);
+  will-change: transform, filter;
+}
+
+.turn-pill.thinking::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: thinking-dot 800ms ease-in-out infinite alternate;
+}
+
+@keyframes ai-piece-move {
+  0% {
+    transform: translate(var(--move-x), var(--move-y)) scale(.94);
+    filter: drop-shadow(0 8px 5px #3a251c55);
+  }
+  72% { transform: translate(0, 0) scale(1.06); }
+  100% { transform: translate(0, 0) scale(1); filter: none; }
+}
+
+@keyframes last-move-pulse {
+  0% { transform: scale(.72); opacity: 0; }
+  45% { opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes thinking-dot {
+  to { opacity: .25; transform: scale(.72); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece.ai-moved,
+  .cell.last-to::after,
+  .turn-pill.thinking::after { animation: none; }
+}
