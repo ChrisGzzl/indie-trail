@@ -1,7 +1,10 @@
-# Endless Rails Dual Progression Design
+# Endless Rails v0.3 Dual Progression Design
 
 **Status:** Proposed
 **Date:** 2026-09-02
+**Target version:** v0.3
+
+This design starts from the manually submitted v0.2 baseline. The dual-progression systems described here are v0.3 scope and are not part of v0.2.
 
 ## Goal
 
