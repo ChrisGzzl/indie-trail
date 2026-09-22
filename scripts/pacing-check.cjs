@@ -17,7 +17,7 @@ for (let seed = 1; seed <= 12; seed++) {
         chooseLevelUp(choice);upgradeCount++;
       }else if(state.mode==='station'){
         checkpoints.push({station:state.station,hp:Math.round(state.trainHp),level:state.level,kills:state.kills,banked:{...state.longtermRun.banked}});
-        state.selectedUpgrade=stationUpgradePool.find(u=>u.id==='armor');continueRun();beginRoute(routeEvents.ROUTE_EVENTS[2]);
+        const offered=ui.upgrades.children.find(c=>c.innerHTML.includes('装甲铆接'))||ui.upgrades.children[0];offered.events.click();continueRun();beginRoute(routeEvents.ROUTE_EVENTS[2]);
       }else{
         // Modest pilot: patrol around the train, use pulse; no invincibility or GM buffs.
         const t=state.visualTime;
