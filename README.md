@@ -20,13 +20,13 @@ python -m http.server 4173
 
 ### v0.9 回归
 
-- 从首页进入“远征准备”，配置区域、车厢与研究。长期资源在车站锁定，可继续深入或撤离。
+- 主页底部为“商店 / 列车 / 出战 / 研究 / 设置”：出战页选择区域，列车页配置编组，研究页强化无人机。长期资源在车站锁定，可继续深入或撤离。
 - 逻辑回归：`for f in endless-rails/*.test.js; do node "$f" || exit 1; done`。
 - 可重复数值采样：`node scripts/pacing-check.cjs`，无渲染、无 GM，输出 12 个种子的完整远征结果。
 - 浏览器回归：同一静态服务器打开 `endless-rails/qa.html`。它提供四种视口、隔离测试存档和高压场景；生产游戏入口仍是 `endless-rails/`。工作耗时不含浏览器 GPU 合成开销，云端 Chrome 的 FPS 不代表手机真机表现。
 
 ### 开发期用户存档（JSON 文件）
 
-运行 `node services/player-data/server.cjs`，打开 <http://127.0.0.1:4173/endless-rails/>，首页「测试存档」可按测试 ID 切换各自的服务器 JSON 存档。无需数据库、注册或安装依赖。支持旧游客进度导入、冲突选择和断网重试。
+运行 `node services/player-data/server.cjs`，打开 <http://127.0.0.1:4173/endless-rails/>，设置页「测试存档」可按测试 ID 切换各自的服务器 JSON 存档。无需数据库、注册或安装依赖。支持旧游客进度导入、冲突选择和断网重试。
 
 [运行说明、文件位置和容量边界](services/player-data/README.md)。GitHub Pages 的测试存档入口默认关闭，仍保留原本本地存档。
