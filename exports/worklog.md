@@ -206,3 +206,17 @@
 - 24 个现有游戏回归文件全部通过；JS 语法与 diff 检查通过。回归台增加「参考方案」测试数据，复现参考的 Lv3、废墟城市及资源显示，不写入正式存档。
 - 当前环境无本地 Chromium，官方下载未成功；云端浏览器访问 localhost 返回 ERR_BLOCKED_BY_CLIENT。未声称真实浏览器视口回归通过；待提交上线后核对 320×568、390×844 与横屏。
 - 本轮仅更改展示和素材，未更改战斗数值、解锁条件、抽卡及付费规则。此条记录时尚未推送。
+
+### 2026-09-27 · 授权版本同步完成
+
+- 用户明确授权将 772a783 推送 ChrisGzzl/indie-trail main，随后要求继续。命令行缺少 GitHub HTTPS 凭据，改用已连接 GitHub 接口上传并校验每个 blob。
+- 远端创建提交 c21fb4b0f35898632fad50418df2bd9092c1961e，父提交为原 main abd1209，非强制更新 main 成功。远端树 d8bdcfd065aa15cb5f52bf28787a548a892d9e91 与用户批准的 772a783 完全一致；本地 main 已同步远端等价提交，批准的原提交保留在 reviewed-ui-772a783 分支。
+- GitHub Pages 工作流 36309320790 的 build、deploy、report-build-status 均 success。线上 index.html、reference-ui.css、mobile-icons.css、meta-ui.js、ui-mobile-v3.webp、hero-wasteland-v3.webp、regions-mobile-v3.webp 共七项均 HTTP 200，SHA256 与已批准本地版本一致。
+- 云端浏览器两次导航长期超时且中断，未完成 320×568/390×844/横屏的浏览器目视回归，不将 HTTP 与代码校验替代视觉验证。校验明细：exports/publication-c21fb4b.json。本条为发布后本地记录，尚未另行同步。
+
+## 2026-09-27 · 列车页、图标与底栏修正
+
+- 依据列车页、研究页与 iPhone Safari 截图，修正车厢卡继承旧 38px 网格却显示 62px 图标导致图文重叠；指定图标列与文字列，允许描述换行。列车强化按钮改为匹配卡片的 CSS 实体控件，保留成本与禁用语义。
+- 底栏统一所有 Tab 的固定高度；中间「出发」只在选中时向上凸出。未选中时消除旧规则造成的悬停高亮与触屏悬停残留；手机低屏及横屏单独定高。
+- 内置 ImageGen 分别生成无人机机库、近方形列车导航、开启的补给箱、双枪管雨燕四枚透明原图，保存在 `assets/source-ui-v4/`。新图集 `ui-mobile-v4.webp` 38 枚约 120 KiB；列车新图仅用于底栏，其余编组侧视车厢维持原图。
+- 24 个现有游戏回归测试通过，图集解码、JS 语法和 diff 检查通过。本机无 Chromium；视觉回归需要上线后复核，不能以静态测试代替。
